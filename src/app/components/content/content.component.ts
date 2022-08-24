@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MoviesService} from "../../services/movies.service";
 import {SwiperComponent} from "swiper/angular";
 import {SwiperOptions} from 'swiper';
+import {Subscription} from "rxjs";
 
 interface Preload {
   Title: string;
@@ -25,7 +26,8 @@ interface Movie {
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent implements OnInit, OnDestroy {
+  public subscriptions: Subscription[] = [];
   public moviesList: Movie[] = [];
   public swiperPages: number[] = [1, 2, 3, 4];
   @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
@@ -43,7 +45,7 @@ export class ContentComponent implements OnInit {
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
-    this.moviesService.getMoviesList().subscribe(res => {
+    const s = this.moviesService.getMoviesList().subscribe(res => {
       this.moviesList = res.Search.map((item: Preload) => {
         return {
           title: item.Title,
@@ -55,6 +57,7 @@ export class ContentComponent implements OnInit {
         }
       });
     })
+    this.subscriptions.push(s);
   }
 
   public swipePrev = () => {
@@ -72,6 +75,10 @@ export class ContentComponent implements OnInit {
   public onSlideChange = (event: any) => {
     const s = document.querySelector('.counterCustom') as HTMLElement;
     s.innerHTML = (event[0].realIndex + 1) + '/6';
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }

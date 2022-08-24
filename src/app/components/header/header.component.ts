@@ -49,8 +49,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
           year: item.Year
         }
       })
-      this.subscriptions.push(movies);
     })
+    this.subscriptions.push(movies);
 
     const series = this.moviesService.getSeriesList(this.page).subscribe(res => {
       this.categories[1].list = res.Search.map((item: { Title: any; Year: any; }) => {
@@ -59,8 +59,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
           year: item.Year
         }
       })
-      this.subscriptions.push(series);
     })
+    this.subscriptions.push(series);
   }
 
   public toggle = (event: any) => {

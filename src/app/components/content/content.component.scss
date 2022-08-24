@@ -4,8 +4,21 @@ h1 {
   color: #F0EFEF;
   margin-bottom: 2.5rem;
 }
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75rem;
+  z-index: 0;
+  background-image: url(~src/assets/img/bg__main.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 96px 70px -10px #000, inset 0 -182px 91px -10px #000;
+}
 #main {
   width: 100%;
+  margin-bottom: 10rem;
   .slider {
     position: relative;
     padding-top: 8.8rem;
@@ -61,6 +74,7 @@ h1 {
     &__content {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 15rem;
       .info {
         max-width: 60%;
         flex: 1 0;
@@ -95,6 +109,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     .page {
       display: flex;
       &_index {
