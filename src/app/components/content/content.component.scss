@@ -450,3 +450,108 @@ h1 {
     }
   }
 }
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2.6rem;
+    text-align: center;
+  }
+  .layer {
+    height: 108rem;
+  }
+  #main {
+    margin-bottom: 10rem;
+    .slider {
+      &__head {
+        flex-direction: column;
+        align-items: start;
+        &-item {
+          margin-bottom: 1.5rem;
+        }
+      }
+      &__content {
+        flex-direction: column;
+        margin-bottom: 5rem;
+        .info {
+          max-width: 100%;
+          margin-bottom: 2rem;
+          h2 {
+            font-size: 2.4rem;
+          }
+        }
+        .play {
+          font-size: 2.6rem;
+          &__btn {
+            width: 4.8rem;
+            height: auto;
+            margin-bottom: 2rem;
+          }
+        }
+      }
+    }
+    .slider__footer {
+      flex-direction: column;
+      .page {
+        margin-bottom: 2rem;
+      }
+      .controls {
+        display: flex;
+        .control {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+  #trending {
+    .filters {
+      flex-direction: column;
+      .genres {
+        flex-direction: column;
+        text-align: center;
+        .filter {
+          margin: 0 0 1rem !important;
+        }
+      }
+    }
+    .plate {
+      flex-direction: column;
+      align-items: center;
+      &__item {
+        max-width: 100%;
+      }
+    }
+  }
+  #watch_online {
+    margin-bottom: 10rem;
+    .list {
+      &__item {
+        .favourite {
+          top: 10.2rem;
+          z-index: 2;
+        }
+        &-general {
+          flex-direction: column;
+        }
+        &-view {
+          margin-right: 0;
+          margin-bottom: 2rem;
+        }
+        &-info {
+          p {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      button {
+        width: 3.6rem;
+        height: 3.6rem;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

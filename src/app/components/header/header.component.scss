@@ -94,3 +94,27 @@
     }
   }
 }
+@media (max-width: 767px) {
+  .header {
+    flex-direction: column;
+    .logo {
+      margin-bottom: 2rem;
+    }
+    .categories {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0;
+      margin-bottom: 2rem;
+      .category__list {
+        max-width: 100%;
+      }
+      .category {
+        width: 50%;
+        &:not(:last-child) {
+          margin-bottom: 2rem;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

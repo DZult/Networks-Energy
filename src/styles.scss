@@ -28,10 +28,13 @@ body {
 .wrapper {
   background-color: #1E1E1E;
 }
-.container {
-}
 @media (min-width: 1024px) {
   .container {
     max-width: 1320px;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    padding: 0 20px;
   }
 }
