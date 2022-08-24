@@ -1,0 +1,75 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    width: 10.5rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .categories {
+    display: flex;
+    padding: 0 2rem;
+    .category {
+      position: relative;
+      &:not(:last-child) {
+        margin-right: 4.75rem;
+      }
+      &__name {
+        font-size: 1.6rem;
+        font-weight: 500;
+        &.expanded ~ .category__list {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &__list {
+        background-color: rgba(255, 255, 255, 0.4);
+        padding: 0.8rem;
+        border-radius: 8px;
+        position: absolute;
+        top: 2.5rem;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s, visibility 0.2s;
+        min-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        li {
+          cursor: pointer;
+          border-radius: 8px;
+          &:hover {
+            color: #323232;
+            background-color: rgba(255, 255, 255, 0.8);
+          }
+          &:not(:last-child) {
+            margin-bottom: .8rem;
+          }
+        }
+      }
+    }
+  }
+  .interactions {
+    display: flex;
+    .interaction {
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-right: 2.4rem;
+      }
+      &__search {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+      &__user {
+        width: 2rem;
+        height: 2rem;
+      }
+      &__language {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+  }
+}
