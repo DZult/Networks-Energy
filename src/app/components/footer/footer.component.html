@@ -1,1 +1,64 @@
-<p>footer works!</p>
+<div class="footer">
+  <div class="top">
+    <div class="block" *ngFor="let menu of topMenu">
+      <p class="title">{{menu.title}}</p>
+      <a href="/" class="link" *ngFor="let link of menu.links">
+        {{link}}
+      </a>
+    </div>
+    <div class="block">
+      <p class="title">Приложение</p>
+      <a href="/" class="download app-store">
+        <img src="/assets/img/app-store.jpg" alt="app-store">
+      </a>
+      <a href="/" class="download google-play">
+        <img src="/assets/img/app-store.jpg" alt="google-play">
+      </a>
+    </div>
+  </div>
+  <div class="middle">
+    <div class="block">
+      <p class="title">Мы в соцсетях</p>
+      <div class="icons">
+        <a href="/" class="icon vk">
+          <img src="/assets/icon/vk.svg" alt="vk">
+        </a>
+        <a href="/" class="icon instagram">
+          <img src="/assets/icon/instagram.svg" alt="instagram">
+        </a>
+        <a href="/" class="icon twitter">
+          <img src="/assets/icon/twitter.svg" alt="twitter">
+        </a>
+        <a href="/" class="icon youtube">
+          <img src="/assets/icon/youtube.svg" alt="youtube">
+        </a>
+        <a href="/" class="icon telegram">
+          <img src="/assets/icon/telegram.svg" alt="telegram">
+        </a>
+      </div>
+    </div>
+    <div class="block" *ngFor="let menu of middleMenu">
+      <p class="title" *ngFor="let title of menu.title">
+        {{title}}
+      </p>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="bottom-left">
+      <div class="logo">
+        <a href="/">
+          <img src="/assets/icon/logo.svg" alt="logo">
+        </a>
+      </div>
+      <div class="trademark">
+        <p>© 2022, АО «КИНО ОНЛАЙН». ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
+        <p>Телефон доверия : 8 (7172) 61-01-01</p>
+      </div>
+    </div>
+    <div class="politics">
+      Продолжая использовать наш сайт, вы даете согласие на обработку файлов Cookies и других<br>
+      пользовательских данных, в соответсвии с <a href="/" class="confidential">Политикой конфиденциальности.</a>
+    </div>
+  </div>
+
+</div>
