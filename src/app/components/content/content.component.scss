@@ -9,7 +9,7 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 75rem;
+  height: 80rem;
   z-index: 0;
   background-image: url(~src/assets/img/bg__main.jpg);
   background-repeat: no-repeat;
@@ -22,6 +22,7 @@ h1 {
   .slider {
     position: relative;
     padding-top: 8.8rem;
+    cursor: grab;
     &:before {
       content: '';
       position: absolute;
