@@ -1,37 +1,44 @@
 <section id="main">
-  <div class="slider" *ngFor="let movie of moviesList">
-    <div class="slider__head">
-      <div class="slider__head-item imdb">
-        <div class="imdb_logo">
-          <img src="assets/icon/imdb.svg" alt="imdb-icon">
+  <swiper
+    #swiper
+    [config]="config"
+  >
+    <ng-template swiperSlide *ngFor="let movie of moviesList; let i = index">
+      <div class="slider">
+        <div class="slider__head">
+          <div class="slider__head-item imdb">
+            <div class="imdb_logo">
+              <img src="assets/icon/imdb.svg" alt="imdb-icon">
+            </div>
+            {{movie.imdbID}}
+          </div>
+          <div class="slider__head-item year">ГОД: <span>{{movie.year}}</span></div>
+          <div class="slider__head-item type">ТИП: <span>{{movie.type}}</span></div>
         </div>
-        {{movie.imdbID}}
+        <div class="slider__content">
+          <div class="info">
+            <h2>{{movie.title}}</h2>
+            <p>{{movie.description}}</p>
+          </div>
+          <div class="play">
+            <div class="play__btn">
+              <img src="assets/icon/play.svg" alt="play">
+            </div>
+            Смотреть
+          </div>
+        </div>
       </div>
-      <div class="slider__head-item year">ГОД: <span>{{movie.year}}</span></div>
-      <div class="slider__head-item type">ТИП: <span>{{movie.type}}</span></div>
+    </ng-template>
+  </swiper>
+  <div class="slider__footer">
+    <div class="page">
+      <div class="page_index" *ngFor="let page of swiperPages, let i = index" [ngClass]="{active: i === page}">
+        {{i + 1}}
+      </div>
     </div>
-    <div class="slider__content">
-      <div class="info">
-        <h2>{{movie.title}}</h2>
-        <p>{{movie.description}}</p>
-      </div>
-      <div class="play">
-        <div class="play__btn">
-          <img src="assets/icon/play.svg" alt="play">
-        </div>
-        Смотреть
-      </div>
-    </div>
-    <div class="slider__footer">
-      <div class="page">
-        <div class="page_index" *ngFor="let page of swiperPages, let i = index" [ngClass]="{active: i === page}">
-          {{i + 1}}
-        </div>
-      </div>
-      <div class="controls">
-        <button class="left">Пред</button>
-        <button class="right">След</button>
-      </div>
+    <div class="controls">
+      <button class="control previous" (click)="swipePrev()"><span class="arrow arrow-previous"></span>Пред</button>
+      <button class="control next" (click)="swipeNext()">След<span class="arrow arrow-next"></span></button>
     </div>
   </div>
 </section>

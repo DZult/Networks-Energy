@@ -1,6 +1,7 @@
 #main {
   width: 100%;
   height: 1000px;
+  box-shadow: inset 0 70px 45px -10px #000;
   .slider {
     position: relative;
     padding-top: 8.8rem;
@@ -85,23 +86,55 @@
         }
       }
     }
-    &__footer {
-      .page {
-        display: flex;
-        &_index {
-          font-size: 1.8rem;
-          font-weight: 800;
-          transition: font-size 0.2s ease;
-          &:not(:last-child) {
-            margin-right: 2.5rem;
-          }
-          &.active {
-            font-size: 3.2rem;
-          }
+  }
+  .slider__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .page {
+      display: flex;
+      &_index {
+        font-size: 1.8rem;
+        font-weight: 800;
+        transition: font-size 0.2s ease;
+        &:not(:last-child) {
+          margin-right: 2.5rem;
+        }
+        &.active {
+          font-size: 3.2rem;
         }
       }
-      .controls {
+    }
+    .controls {
+      .control {
         text-transform: uppercase;
+        text-outline: none;
+        border: none;
+        background-color: transparent;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #F0EFEF;
+        &:first-child {
+          margin-right: 4rem;
+        }
+        .arrow {
+          display: inline-block;
+          width: 5.3rem;
+          height: 0.95rem;
+          background-repeat: no-repeat;
+          background-position: top left;
+          background-size: contain;
+          position: relative;
+          &-previous {
+            top: -0.3rem;
+            background-image: url(~src/assets/icon/arrow-left.svg);
+            margin-right: 1.6rem;
+          }
+          &-next {
+            background-image: url(~src/assets/icon/arrow-right.svg);
+            margin-left: 1.6rem;
+          }
+        }
       }
     }
   }

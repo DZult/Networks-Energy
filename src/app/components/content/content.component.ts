@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MoviesService} from "../../services/movies.service";
+import {SwiperComponent} from "swiper/angular";
+import {SwiperOptions} from 'swiper';
 
 interface Preload {
   Title: string;
@@ -26,6 +28,16 @@ interface Movie {
 export class ContentComponent implements OnInit {
   public moviesList: Movie[] = [];
   public swiperPages: number[] = [1, 2, 3, 4];
+  @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
+  config: SwiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 50,
+    loop: true,
+    allowTouchMove: true,
+    pagination: { clickable: true },
+    scrollbar: { draggable: true },
+    navigation: true
+  };
 
   constructor(private moviesService: MoviesService) { }
 
@@ -43,6 +55,23 @@ export class ContentComponent implements OnInit {
       });
       console.log(this.moviesList)
     })
+  }
+
+  public swipePrev = () => {
+    if (this.swiper) {
+      this.swiper.swiperRef.slidePrev();
+    }
+  }
+
+  public swipeNext = () => {
+    if (this.swiper) {
+      this.swiper.swiperRef.slideNext();
+    }
+  }
+
+  public onSlideChange = (event: any) => {
+    const s = document.querySelector('.counterCustom') as HTMLElement;
+    s.innerHTML = (event[0].realIndex + 1) + '/6';
   }
 
 }
