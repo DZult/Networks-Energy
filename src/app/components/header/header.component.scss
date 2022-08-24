@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 3.5rem 0;
   .logo {
     width: 10.5rem;
     height: 2rem;
@@ -12,8 +13,10 @@
     padding: 0 2rem;
     .category {
       position: relative;
+      display: flex;
+      align-items: center;
       &:not(:last-child) {
-        margin-right: 4.75rem;
+        margin-right: 4rem;
       }
       &__name {
         font-size: 1.6rem;
@@ -22,13 +25,27 @@
           opacity: 1;
           visibility: visible;
         }
+        &.expanded ~ .category__dropdown_arrow {
+          transform: rotate(180deg);
+        }
+      }
+      &__dropdown_arrow {
+        display: inline-block;
+        width: 0.9rem;
+        height: 0.6rem;
+        margin-left: 0.75rem;
+        background-image: url(~src/assets/icon/arrow__down.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top left;
+        transition: transform 0.2s;
       }
       &__list {
         background-color: rgba(255, 255, 255, 0.4);
         padding: 0.8rem;
         border-radius: 8px;
         position: absolute;
-        top: 2.5rem;
+        top: 3.5rem;
         left: 0;
         opacity: 0;
         visibility: hidden;

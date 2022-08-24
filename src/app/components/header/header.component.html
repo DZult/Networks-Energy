@@ -5,6 +5,7 @@
   <div class="categories">
     <div *ngFor="let category of categories" class="category">
       <a href="/" class="category__name" (click)="toggle($event)">{{category?.name}}</a>
+      <span class="category__dropdown_arrow" *ngIf="category.list && category.list.length"></span>
       <ul class="category__list" *ngIf="category.list && category.list.length">
         <li *ngFor="let listItem of category.list">
           {{listItem.title}}

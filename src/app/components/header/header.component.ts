@@ -19,9 +19,7 @@ interface CategoryItem {
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   public subscriptions: Subscription[] = [];
-  public categoryMoviesDropdown: CategoryItem[] = [];
-  public categorySeriesDropdown: CategoryItem[] = [];
-  public page = 1;
+  public page: number = 1;
 
   public categories: Category[] = [
     {
@@ -29,7 +27,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
     {
       name: 'Сериалы 2022',
-      list: this.categorySeriesDropdown,
     },
     {
       name: 'Мультфильмы',
