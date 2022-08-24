@@ -3,7 +3,7 @@
     #swiper
     [config]="config"
   >
-    <ng-template swiperSlide *ngFor="let movie of moviesList; let i = index">
+    <ng-template swiperSlide *ngFor="let movie of moviesList | slice:0:4; let i = index">
       <div class="slider">
         <div class="slider__head">
           <div class="slider__head-item imdb">
@@ -42,5 +42,35 @@
     </div>
   </div>
 </section>
-<section id="trending"></section>
-<section id="watch_online"></section>
+<section id="trending">
+  <h1>В тренде</h1>
+  <div class="filters">
+    <div class="genres">
+      <div class="filter" *ngFor="let filter of filters">
+        {{filter}}
+      </div>
+    </div>
+    <p class="watch-all">смотреть все</p>
+  </div>
+  <div class="list">
+    <div class="list__item" *ngFor="let movie of moviesList | slice:0:10">
+      <img class="poster" [src]="movie.poster" alt="poster">
+      <div class="poster-wrapper"></div>
+      <span class="format">WEB-DL</span>
+      <div class="info">
+        <span class="imdb">
+          <span class="icon">
+            <img src="assets/icon/imdb.svg" alt="imdb">
+          </span>
+          {{movie.imdbID}}
+        </span>
+        <span class="year">{{movie.year}}</span>
+        <span class="title">{{movie.title}}</span>
+      </div>
+      <span class="watch-online">Смотреть онлайн</span>
+    </div>
+  </div>
+</section>
+<section id="watch_online">
+  <h1>Смотреть фильмы онлайн бесплатно</h1>
+</section>

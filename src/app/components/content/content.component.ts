@@ -38,12 +38,13 @@ export class ContentComponent implements OnInit {
     scrollbar: { draggable: true },
     navigation: true
   };
+  public filters: string[] = ['Все', 'Экшен', 'Фантастика', 'Приключения', 'Анимация', 'Биография', 'Комедии', 'Драма']
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
     this.moviesService.getMoviesList().subscribe(res => {
-      this.moviesList = res.Search.slice(0, 4).map((item: Preload) => {
+      this.moviesList = res.Search.map((item: Preload) => {
         return {
           title: item.Title,
           year: item.Year,
@@ -53,7 +54,6 @@ export class ContentComponent implements OnInit {
           description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut nemo neque sapiente. Doloremque enim eveniet necessitatibus, quam repellendus sed ullam?",
         }
       });
-      console.log(this.moviesList)
     })
   }
 
