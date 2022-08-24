@@ -18,7 +18,7 @@ h1 {
 }
 #main {
   width: 100%;
-  margin-bottom: 10rem;
+  margin-bottom: 15rem;
   .slider {
     position: relative;
     padding-top: 8.8rem;
@@ -160,6 +160,7 @@ h1 {
   }
 }
 #trending {
+  margin-bottom: 10rem;
   .filters {
     display: flex;
     justify-content: space-between;
@@ -184,7 +185,7 @@ h1 {
       margin: 0;
     }
   }
-  .list {
+  .plate {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -267,6 +268,183 @@ h1 {
         z-index: 2;
         font-size: 1.3rem;
         font-weight: 800;
+      }
+    }
+  }
+}
+#watch_online {
+  h1 {
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 0.2rem;
+      border-radius: 50%;
+      background-color: #353535;
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.8rem;
+    &__item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2.4rem;
+      position: relative;
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+        height: 0.2rem;
+        border-radius: 50%;
+        background-color: #353535;
+        margin-top: 2.4rem;
+      }
+      .head-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #E64E9A;
+        margin-bottom: 2.4rem;
+      }
+      &-general {
+        display: flex;
+      }
+      &-view {
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+        min-width: 24.6rem;
+        height: 34.4rem;
+        padding: 2rem 0 3.2rem 2.4rem;
+        margin-right: 5.7rem;
+
+        .poster {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+        .poster-wrapper {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.3);
+          z-index: 1;
+        }
+        .format {
+          position: absolute;
+          top: 2rem;
+          left: 0;
+          z-index: 2;
+          padding: 1rem 2rem;
+          background-color: rgba(0, 0, 0, .75);
+          font-size: 1.3rem;
+          font-weight: 500;
+        }
+        .info {
+          position: absolute;
+          top: 11rem;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 2.4rem;
+          .imdb {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            .icon {
+              display: inline-block;
+              width: 4.1rem;
+              height: 2.4rem;
+              margin-right: 1.2rem;
+            }
+          }
+          .year {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+          }
+          .title {
+            font-size: 1.9rem;
+            font-weight: 800;
+          }
+        }
+        .watch-online {
+          position: absolute;
+          bottom: 3.2rem;
+          left: 2.4rem;
+          z-index: 2;
+          font-size: 1.3rem;
+          font-weight: 800;
+        }
+      }
+      &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        p {
+          font-size: 1.7rem;
+          color: #F0EFEF;
+        }
+        .top {
+          max-width: 61rem;
+          p {
+            &:first-child {
+              margin-bottom: 2.4rem;
+            }
+            &:last-child {
+              margin-top: 5rem;
+            }
+          }
+        }
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+          p {
+            margin: 0;
+          }
+        }
+      }
+      .favourite {
+        width: 4.8rem;
+        height: 4.8rem;
+        border-radius: 50%;
+        overflow: hidden;
+        position: absolute;
+        top: 4rem;
+        right: 1rem;
+        background-color: #131315;
+        background-image: url(~src/assets/icon/star-white.svg);
+        background-position: center;
+        background-size: 1.6rem;
+        background-repeat: no-repeat;
+        transition: background-image 0.3s ease;
+        cursor: pointer;
+        &.active {
+          background-image: url(~src/assets/icon/star.svg);
+        }
+      }
+    }
+  }
+  .pagination {
+    button {
+      width: 4.8rem;
+      height: 4.8rem;
+      border-radius: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      outline: none;
+      border: none;
+      margin-right: 2.4rem;
+      transition: background-color 0.3s ease;
+      &.active {
+        background-color: #E64E9A;
       }
     }
   }

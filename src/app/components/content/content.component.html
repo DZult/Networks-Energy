@@ -53,8 +53,8 @@
     </div>
     <p class="watch-all">смотреть все</p>
   </div>
-  <div class="list">
-    <div class="list__item" *ngFor="let movie of moviesList | slice:0:10">
+  <div class="plate">
+    <div class="plate__item" *ngFor="let movie of moviesList | slice:0:10">
       <img class="poster" [src]="movie.poster" alt="poster">
       <div class="poster-wrapper"></div>
       <span class="format">WEB-DL</span>
@@ -74,4 +74,45 @@
 </section>
 <section id="watch_online">
   <h1>Смотреть фильмы онлайн бесплатно</h1>
+  <div class="list">
+    <div class="list__item" *ngFor="let movie of fullMoviesList | slice: 0 : 4">
+      <p class="head-title">{{movie.title}}</p>
+      <div class="list__item-general">
+        <div class="list__item-view">
+          <img class="poster" [src]="movie.poster" alt="poster">
+          <div class="poster-wrapper"></div>
+          <span class="format">WEB-DL</span>
+          <div class="info">
+        <span class="imdb">
+          <span class="icon">
+            <img src="assets/icon/imdb.svg" alt="imdb">
+          </span>
+          {{movie.imdbID}}
+        </span>
+            <span class="year">{{movie.year}}</span>
+            <span class="title">{{movie.title}}</span>
+          </div>
+          <span class="watch-online">Смотреть онлайн</span>
+        </div>
+        <div class="list__item-info">
+          <div class="top">
+            <p>Год: {{movie.year}}</p>
+            <p>Страна: США, Испания</p>
+            <p>Жанр: Фэнтези, Приключения</p>
+            <p>{{movie.description}}</p>
+          </div>
+          <div class="bottom">
+            <p class="feedback">Еще нет отзывов</p>
+            <p class="date">06-08-2022</p>
+          </div>
+        </div>
+        <div class="favourite" (click)="toggle($event)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination">
+    <button *ngFor="let page of pagination, let i = index"
+            [ngClass]="{active: currentPage === i + 1}"
+            (click)="onPaginate(i + 1)">{{i + 1}}</button>
+  </div>
 </section>

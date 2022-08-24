@@ -29,7 +29,10 @@ interface Movie {
 export class ContentComponent implements OnInit, OnDestroy {
   public subscriptions: Subscription[] = [];
   public moviesList: Movie[] = [];
+  public fullMoviesList: Movie[] = [];
   public swiperPages: number[] = [1, 2, 3, 4];
+  public pagination: any;
+  public currentPage = 1;
   @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
   config: SwiperOptions = {
     slidesPerView: 1,
@@ -58,6 +61,25 @@ export class ContentComponent implements OnInit, OnDestroy {
       });
     })
     this.subscriptions.push(s);
+
+    const ss = this.moviesService.getMoviesList().subscribe(res => {
+      this.fullMoviesList = res.Search.map((item: Preload) => {
+        return {
+          title: item.Title,
+          year: item.Year,
+          type: item.Type,
+          imdbID: item.imdbID,
+          poster: item.Poster,
+          description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut nemo neque sapiente. Doloremque enim eveniet necessitatibus, quam repellendus sed ullam?",
+        }
+      });
+      this.pagination = Array(this.fullMoviesList.length % 4 === 1 ? this.fullMoviesList.length % 4 : (this.fullMoviesList.length % 4) + 1).fill(1);
+    })
+    this.subscriptions.push(ss);
+
+    setTimeout(() => {
+      console.log(this.pagination)
+    }, 3000)
   }
 
   public swipePrev = () => {
@@ -75,6 +97,28 @@ export class ContentComponent implements OnInit, OnDestroy {
   public onSlideChange = (event: any) => {
     const s = document.querySelector('.counterCustom') as HTMLElement;
     s.innerHTML = (event[0].realIndex + 1) + '/6';
+  }
+
+  public toggle = (event: any) => {
+    event.preventDefault();
+    event.target.classList.toggle('active');
+  }
+
+  public onPaginate = (page: number = 1) => {
+    this.currentPage = page;
+    const s = this.moviesService.getMoviesList(page).subscribe(res => {
+      this.fullMoviesList = res.Search.map((item: Preload) => {
+        return {
+          title: item.Title,
+          year: item.Year,
+          type: item.Type,
+          imdbID: item.imdbID,
+          poster: item.Poster,
+          description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut nemo neque sapiente. Doloremque enim eveniet necessitatibus, quam repellendus sed ullam?",
+        }
+      });
+    });
+    this.subscriptions.push(s);
   }
 
   ngOnDestroy(): void {
